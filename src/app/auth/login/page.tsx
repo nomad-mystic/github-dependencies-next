@@ -63,7 +63,7 @@ const LoginPage = (): React.JSX.Element => {
     };
 
     return (
-        <section className="Login flex flex-col items-center justify-center h-screen">
+        <section className="Login flex flex-col items-center justify-center h-screen w-full">
             <Card className="w-1/3 flex flex-col items-center justify-between bg-cardBackground">
                 <section className="text-teal p-8 mt-0 mb-0 w-full">
                     <form onSubmit={ onSubmit } id="Login-form">
@@ -84,7 +84,7 @@ const LoginPage = (): React.JSX.Element => {
 
                     <div className="flex justify-center w-1/2 m-auto mt-4">
                         <p className="text-xs">Dont have have an account?</p>
-                        <Link className="Login-createAccount text-primary text-xs ml-1" href="/create-account">Create One.</Link>
+                        <Link className="Login-createAccount text-primary text-xs ml-1" href="/auth/create-account">Create One.</Link>
                     </div>
                 </section>
             </Card>
