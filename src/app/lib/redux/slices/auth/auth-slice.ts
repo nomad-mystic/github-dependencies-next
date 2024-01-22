@@ -9,7 +9,7 @@ import { createSlice } from '@reduxjs/toolkit';
  */
 const authSlice = createSlice({
     name: 'auth',
-    initialState: true,
+    initialState: false,
     reducers: {
         loginIn(state, action) {
             state = true;

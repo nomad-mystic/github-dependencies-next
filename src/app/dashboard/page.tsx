@@ -2,15 +2,16 @@
 
 // Community
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 // Styles
 import './dashboard.css';
 
 // Components
 import Sidebar from '@/app/components/sidebar/sidebar';
-import { ScrollArea } from '@/app/components/ui/scroll-area';
 import { Card, CardTitle } from '@/app/components/ui/card';
-import Link from 'next/link';
+import { ScrollArea } from '@/app/components/ui/scroll-area';
+import Header from '@/app/components/header/header';
 
 // Helpers
 import { getJson } from '@/app/helpers/rest-helpers';
@@ -84,45 +85,51 @@ const DashboardPage = (): React.JSX.Element => {
     }, []);
 
     return (
-        <main className="DashboardPage">
-            <div className="DashboardPage-sidebar">
+        <>
+            <Header />
 
-                <Sidebar/>
+            <main className="DashboardPage">
+                <div className="DashboardPage-sidebar">
 
-            </div>
+                    <Sidebar/>
+
+                </div>
 
 
-            <section className="DashboardPage-content">
-                <section className="DashboardPage-user">
-                    <Card className="DashboardPage-userData">
-                        <CardTitle>User data</CardTitle>
-                    </Card>
+                <section className="DashboardPage-content">
+                    <section className="DashboardPage-user">
+                        <Card className="DashboardPage-userData">
+                            <CardTitle>User data</CardTitle>
+                        </Card>
 
-                    <Card className="DashboardPage-userRepos">
-                        <CardTitle>Repos</CardTitle>
-                    </Card>
+                        <Card className="DashboardPage-userRepos">
+                            <CardTitle>Repos</CardTitle>
+                        </Card>
 
-                    <Card className="DashboardPage-userStatics">
-                        <CardTitle>Statics</CardTitle>
-                    </Card>
+                        <Card className="DashboardPage-userStatics">
+                            <CardTitle>Statics</CardTitle>
+                        </Card>
+                    </section>
+
+                    <section className="DashboardPage-repos">
+                        {
+                            !isError && repos.map((repo: GitHubReposDataType) => {
+                                return (
+                                    <Card key={ repo.id } className="DashboardPage-repo bg-cardBackground">
+                                        <Link href={ `/repo/?current_repo=${ repo.name }` }
+                                              className="DashboardPage-repoLink">
+                                            <CardTitle className="lg:text-2xl">Name: { repo.name }</CardTitle>
+                                            <h2 className="lg:text-2xl">Last Updated: { repo.updated_at }</h2>
+                                        </Link>
+                                    </Card>
+                                );
+                            })
+                        }
+                    </section>
                 </section>
+            </main>
+        </>
 
-                <section className="DashboardPage-repos">
-                    {
-                        !isError && repos.map((repo: GitHubReposDataType) => {
-                            return (
-                                <Card key={ repo.id } className="DashboardPage-repo bg-cardBackground">
-                                    <Link href={ `/repo/?current_repo=${ repo.name }` } className="DashboardPage-repoLink">
-                                        <CardTitle className="lg:text-2xl">Name: { repo.name }</CardTitle>
-                                        <h2 className="lg:text-2xl">Last Updated: { repo.updated_at }</h2>
-                                    </Link>
-                                </Card>
-                            );
-                        })
-                    }
-                </section>
-            </section>
-        </main>
     );
 };
 
