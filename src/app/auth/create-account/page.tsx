@@ -154,7 +154,7 @@ const CreateAccountPage = () => {
 
                     <div className="flex justify-center w-1/2 m-auto mt-4">
                         <p className="text-xs">Already have an account?</p>
-                        <Link className="CreateAccount-login text-primary text-xs ml-1" href="/login">Login.</Link>
+                        <Link className="CreateAccount-login text-primary text-xs ml-1" href="/auth/login">Login.</Link>
                     </div>
                 </section>
             </Card>

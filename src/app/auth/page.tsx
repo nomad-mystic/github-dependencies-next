@@ -1,10 +1,19 @@
+// Community
 import React from 'react';
-import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { AuthState } from '@/app/lib/redux/slices/auth/auth-types';
+
+// Components
 import LoginPage from '@/app/auth/login/page';
 
-const AuthPage = () => {
+/**
+ * @description
+ * @public
+ * @author Keith Murphy | nomadmystics@gmail.com
+ *
+ * @return {React.JSX.Element}
+ */
+const AuthPage = (): React.JSX.Element => {
     const isAuthorized = useSelector((state: AuthState) => state.auth);
 
     return (

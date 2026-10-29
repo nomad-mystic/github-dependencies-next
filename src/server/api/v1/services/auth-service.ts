@@ -18,7 +18,14 @@ class AuthService {
     private static instance: AuthService;
 
     constructor() {}
-
+    
+    /**
+     * @description 
+     * @public 
+     * @author Keith Murphy | nomadmystics@gmail.com
+     *
+     * @return 
+     */
     public getAuthService = async (): Promise<AuthService | void> => {
         try {
 
@@ -71,7 +78,14 @@ class AuthService {
             console.error(err);
         }
     };
-
+    
+    /**
+     * @description 
+     * @public 
+     * @author Keith Murphy | nomadmystics@gmail.com
+     *
+     * @return 
+     */
     public checkUserAuth = async (): Promise<void> => {
         try {
             passport.use(
